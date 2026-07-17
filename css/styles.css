@@ -448,6 +448,12 @@ html.js .reveal.is-visible {
   gap: 28px;
 }
 
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
 .card {
   background: var(--color-white);
   border-radius: var(--radius);
@@ -792,6 +798,183 @@ html.js .reveal.is-visible {
   font-weight: 700;
 }
 
+.product-visual img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 6px;
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* ---------- Quick nav pills ---------- */
+
+.quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 26px;
+  position: relative;
+  z-index: 2;
+}
+
+.quick-nav a {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--color-white);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-nav a:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Category blocks & product photo cards ---------- */
+
+.category-block {
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(124, 139, 148, 0.2);
+}
+
+.category-block:last-child {
+  border-bottom: none;
+}
+
+.category-header {
+  margin-bottom: 32px;
+}
+
+.category-header h2 {
+  color: var(--color-navy);
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  margin: 10px 0 10px;
+}
+
+.category-header p {
+  color: var(--color-grey);
+  max-width: 640px;
+  margin: 0;
+}
+
+.category-sub {
+  color: var(--color-navy);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 36px 0 18px;
+}
+
+.category-sub:first-of-type {
+  margin-top: 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.product-photo-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--color-gold);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-photo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
+}
+
+.product-photo-card .photo-frame {
+  background: #f1ede3;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.product-photo-card .photo-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-photo-card .photo-body {
+  padding: 22px 24px 26px;
+}
+
+.product-photo-card h4 {
+  color: var(--color-navy);
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+.product-photo-card p {
+  color: var(--color-grey);
+  font-size: 0.9rem;
+  margin: 0 0 14px;
+}
+
+.spec-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.spec-chip {
+  background: rgba(20, 50, 74, 0.07);
+  color: var(--color-navy);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 20px;
+}
+
+.engineering-panel {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+.engineering-panel img {
+  flex: 1 1 420px;
+  border-radius: 8px;
+  border: 1px solid rgba(124, 139, 148, 0.2);
+}
+
+.engineering-panel .engineering-text {
+  flex: 1 1 280px;
+}
+
+.engineering-panel h3 {
+  color: var(--color-navy);
+  margin: 0 0 10px;
+}
+
+.engineering-panel p {
+  color: var(--color-grey);
+  margin: 0;
+}
+
 /* ---------- Values grid (about page) ---------- */
 
 .values-grid {
@@ -987,6 +1170,12 @@ html.js .reveal.is-visible {
   margin-bottom: 10px;
 }
 
+.footer-location {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
 .site-footer a {
   text-decoration: none;
   color: rgba(255,255,255,0.75);
@@ -1009,7 +1198,9 @@ html.js .reveal.is-visible {
 
 @media (max-width: 900px) {
   .grid-3,
-  .values-grid {
+  .grid-4,
+  .values-grid,
+  .product-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1080,9 +1271,15 @@ html.js .reveal.is-visible {
   }
 
   .grid-3,
+  .grid-4,
   .values-grid,
-  .footer-grid {
+  .footer-grid,
+  .product-grid {
     grid-template-columns: 1fr;
+  }
+
+  .engineering-panel {
+    flex-direction: column;
   }
 
   .two-col {
