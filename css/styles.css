@@ -193,7 +193,7 @@ a {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  z-index: 105;
+  z-index: 90;
 }
 
 .nav-overlay.visible {
@@ -955,10 +955,20 @@ html.js .reveal.is-visible {
   flex-wrap: wrap;
 }
 
-.engineering-panel img {
+.engineering-panel a {
   flex: 1 1 420px;
+  display: block;
+}
+
+.engineering-panel img {
+  width: 100%;
   border-radius: 8px;
   border: 1px solid rgba(124, 139, 148, 0.2);
+  transition: opacity 0.2s ease;
+}
+
+.engineering-panel a:hover img {
+  opacity: 0.88;
 }
 
 .engineering-panel .engineering-text {
@@ -1293,5 +1303,32 @@ html.js .reveal.is-visible {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .product-visual {
+    padding: 22px;
+  }
+
+  .spec-table td {
+    display: block;
+    width: auto !important;
+  }
+
+  .spec-table td:first-child {
+    padding-bottom: 2px;
+    color: var(--color-grey);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+  }
+
+  .spec-table td:last-child {
+    padding-top: 0;
+    padding-bottom: 14px;
+  }
+
+  .engineering-panel {
+    padding: 22px;
   }
 }
