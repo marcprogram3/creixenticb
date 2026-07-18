@@ -1296,6 +1296,11 @@ html.js .reveal.is-visible {
     flex-direction: column;
   }
 
+  .two-col > * {
+    flex: none;
+    width: 100%;
+  }
+
   .product-block,
   .product-block.reverse {
     flex-direction: column;
