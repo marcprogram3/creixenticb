@@ -1114,6 +1114,18 @@ html.js .reveal.is-visible {
   display: block;
 }
 
+.form-success.is-error {
+  background: rgba(169, 52, 43, 0.1);
+  border-color: var(--color-red);
+  color: var(--color-red-dark);
+}
+
+.btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .map-embed {
   border-radius: var(--radius);
   overflow: hidden;

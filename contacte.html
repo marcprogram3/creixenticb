@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=3">
+<link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
@@ -71,7 +71,7 @@
         </svg>
         <div>
           <strong>Correu electrònic</strong>
-          <span><a href="mailto:creixentijordi@hotmail.com" style="color:inherit; text-decoration:none;">creixentijordi@hotmail.com</a></span>
+          <span><a href="mailto:creixentinaval@gmail.com" style="color:inherit; text-decoration:none;">creixentinaval@gmail.com</a></span>
         </div>
       </div>
 
@@ -104,12 +104,15 @@
     </div>
 
     <div class="contact-form reveal">
-      <div class="form-success">Gràcies pel teu missatge! Ens posarem en contacte amb tu el més aviat possible.</div>
-      <form>
+      <div class="form-success"></div>
+      <form id="contact-form">
+        <input type="hidden" name="access_key" value="0ffc1bc7-8ce4-42f9-aad8-748e648da897">
+        <input type="hidden" name="subject" value="Nou missatge des de la web de Creixenti C.B.">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
         <div class="form-row">
           <div class="form-group">
             <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="El teu nom" required>
+            <input type="text" id="nom" name="name" placeholder="El teu nom" required>
           </div>
           <div class="form-group">
             <label for="empresa">Empresa (opcional)</label>
@@ -139,10 +142,9 @@
         </div>
         <div class="form-group">
           <label for="missatge">Missatge</label>
-          <textarea id="missatge" name="missatge" rows="5" placeholder="Explica'ns el teu projecte..." required></textarea>
+          <textarea id="missatge" name="message" placeholder="Explica'ns el teu projecte..." rows="5" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Enviar missatge</button>
-        <p class="form-note">Aquest formulari és una demostració. Per rebre els missatges cal connectar-lo a un servei com Netlify Forms, Formspree o un backend propi.</p>
       </form>
     </div>
 
@@ -185,7 +187,7 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=3"></script>
+<script src="js/script.js?v=4"></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

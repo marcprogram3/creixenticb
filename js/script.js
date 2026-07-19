@@ -77,17 +77,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2500);
   }
 
-  var form = document.querySelector(".contact-form form");
-  var successMsg = document.querySelector(".form-success");
+  var form = document.getElementById("contact-form");
+  var statusMsg = document.querySelector(".form-success");
 
   if (form) {
+    var submitBtn = form.querySelector('button[type="submit"]');
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      form.reset();
-      if (successMsg) {
-        successMsg.classList.add("visible");
-        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      var formData = new FormData(form);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviant...";
       }
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (statusMsg) {
+            statusMsg.classList.toggle("is-error", !result.ok);
+            statusMsg.textContent = result.ok
+              ? "Gràcies pel teu missatge! Ens posarem en contacte amb tu el més aviat possible."
+              : "No hem pogut enviar el missatge. Torna-ho a provar o escriu-nos directament a creixentinaval@gmail.com.";
+            statusMsg.classList.add("visible");
+            statusMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          if (result.ok) form.reset();
+        })
+        .catch(function () {
+          if (statusMsg) {
+            statusMsg.classList.add("visible", "is-error");
+            statusMsg.textContent = "No hem pogut enviar el missatge. Torna-ho a provar o escriu-nos directament a creixentinaval@gmail.com.";
+            statusMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        })
+        .then(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Enviar missatge";
+          }
+        });
     });
   }
 });
